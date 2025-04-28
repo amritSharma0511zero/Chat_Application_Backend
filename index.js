@@ -8,6 +8,8 @@ import cors from 'cors'
 // import path from 'path';
 dotenv.config({});
 
+app.set("trust proxy",1);
+
 const app = express();
 const PORT = process.env.PORT || 7000;
 
@@ -18,12 +20,16 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
 
-const corsOption = {
-    origin :'https://chitchat-1nsv.onrender.com',
-    credentials:true
-}
-app.use(cors(corsOption));
+// const corsOption = {
+//     origin :'https://chitchat-1nsv.onrender.com',
+//     credentials:true
+// }
+// app.use(cors(corsOption));
 
+app.use(cors({
+    origin:"https://chitchat-1nsv.onrender.com",
+    credentials:true
+}))
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message",messageRoute);
 
@@ -36,7 +42,7 @@ app.get('/', (req,res)=>{
     res.send("this is amrit sharma");
 });
 
-app.listen(PORT,()=>{
+app.listen(PORT,"0.0.0.0",()=>{
     connectDB();
     console.log(`Server is running at port: ${PORT}`);
 })
