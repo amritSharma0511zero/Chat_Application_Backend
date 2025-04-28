@@ -32,9 +32,9 @@ app.use("/api/v1/message",messageRoute);
 //     res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
 // })
 //localhost
-// app.get('/', (req,res)=>{
-//     res.send("this is amrit sharma");
-// });
+app.get('/', (req,res)=>{
+    res.send("this is amrit sharma");
+});
 
 app.listen(PORT,()=>{
     connectDB();
