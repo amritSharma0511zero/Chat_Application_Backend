@@ -8,9 +8,9 @@ import cors from 'cors'
 // import path from 'path';
 dotenv.config({});
 
-app.set("trust proxy",1);
 
 const app = express();
+app.set("trust proxy",1);
 const PORT = process.env.PORT || 7000;
 
 // const _dirname = path.resolve();
